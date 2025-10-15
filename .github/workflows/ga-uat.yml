@@ -60,7 +60,8 @@ jobs:
     needs: compele_program
     steps:
       - name: get approve
-        run: echo ${{ vars.EVAPPROVER }}
+        #run: echo ${{ vars.EVAPPROVER }}
+        run: echo halo
     
   deploy-staging:
     runs-on:  ubuntu-latest
