@@ -58,6 +58,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: approval
     needs: compele_program
+    steps:
+      - name: get approve
+        run: echo helo
     
   deploy-staging:
     runs-on:  ubuntu-latest
