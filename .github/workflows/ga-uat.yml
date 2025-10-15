@@ -38,7 +38,8 @@ jobs:
           echo test, and deploy your project.
 
       - run: pwd
-      - run: echo 'done'
+      - run: echo ${{secrets.PDD_PWD1}}
+      - run: echo ${{vars.PDD_PWD1}}
   deploy_program:
     runs-on: unbunt-latest
     steps:
