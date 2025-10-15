@@ -39,3 +39,8 @@ jobs:
 
       - run: pwd
       - run: echo 'done'
+  deploy_program:
+    runs-on: unbunt-latest
+    steps:
+      - name: this is the step to deploy exe/jar program
+        run: pwd
