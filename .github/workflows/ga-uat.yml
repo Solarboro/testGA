@@ -12,6 +12,15 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target Environment'
+        required: true
+        default: staging
+        type: choice
+        options:
+        - staging
+        - production
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,8 +28,8 @@ jobs:
   compele_program:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    #permissions:
-    # contents: read
+    environment: 
+      name: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -45,3 +54,24 @@ jobs:
       - name: echo vars
         run: echo ${{ vars.RV_PDD1 }}
 
+  deploy-staging:
+    runs-on:  ubuntu-latest
+    environment: staging
+    needs: compele_program
+    if: github.ref == 'refs/heads/feature/dev'
+    steps:
+      - name: Deploy to staging
+        run: echo 'deploying to ${{ vars.url }}'
+      - name: echo vars
+        run: echo ${{ vars.RV_PDD1 }}
+    
+  deploy-production:
+    runs-on:  ubuntu-latest
+    environment: staging
+    needs: compele_program
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to staging
+        run: echo 'deploying to ${{ vars.url }}'
+      - name: echo vars
+        run: echo ${{ vars.RV_PDD1 }}
