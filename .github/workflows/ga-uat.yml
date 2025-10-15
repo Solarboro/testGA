@@ -54,10 +54,15 @@ jobs:
       - name: echo vars
         run: echo ${{ vars.RV_PDD1 }}
 
+  deploy-staging-approval:
+    runs-on: ubuntu-latest
+    environment: approval
+    needs: compele_program
+    
   deploy-staging:
     runs-on:  ubuntu-latest
     environment: staging
-    needs: compele_program
+    needs: deploy-staging-approval
     steps:
       - name: Deploy to staging
         run: echo 'deploying to ${{ vars.url }}'
