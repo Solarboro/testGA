@@ -60,7 +60,7 @@ jobs:
     needs: compele_program
     steps:
       - name: get approve
-        run: echo helo
+        run: echo ${{ EVAPPROVER }}
     
   deploy-staging:
     runs-on:  ubuntu-latest
