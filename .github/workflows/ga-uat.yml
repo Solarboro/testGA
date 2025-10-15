@@ -58,20 +58,22 @@ jobs:
     runs-on:  ubuntu-latest
     environment: staging
     needs: compele_program
-    if: github.ref == 'refs/heads/feature/dev'
     steps:
       - name: Deploy to staging
         run: echo 'deploying to ${{ vars.url }}'
       - name: echo vars
         run: echo ${{ vars.RV_PDD1 }}
     
+    if: github.ref == 'refs/heads/feature/dev'
+    
   deploy-production:
     runs-on:  ubuntu-latest
     environment: staging
     needs: compele_program
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: Deploy to staging
         run: echo 'deploying to ${{ vars.url }}'
       - name: echo vars
         run: echo ${{ vars.RV_PDD1 }}
+
+    if: github.ref == 'refs/heads/main'
