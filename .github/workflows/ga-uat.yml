@@ -36,8 +36,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: ls folder
+      - name: pwd folder
         run: pwd
+      - name: ls folder
+        run: ls -l
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.merge_commit_sha }}
@@ -56,7 +58,11 @@ jobs:
           echo " PR Author: ${{ github.event.pull_request.usr.login }} "
           echo " title: ${{ github.event.pull_request.title }} "
 
-      - run: pwd
+      
+      - name: pwd folder
+        run: pwd
+      - name: ls folder
+        run: ls -l
       - name: echo secrets
         run: echo ${{ secrets.RS_PDD1 }}
       - name: echo vars
