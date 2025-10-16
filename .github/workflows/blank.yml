@@ -34,7 +34,7 @@ jobs:
         env:
           JF_URL: ${{ secrets.aritfactory_url }}          
           JF_USER: ${{ secrets.aritfactory_USER }}          
-          JF_PWD: ${{ secrets.aritfactory_PWD }}
+          JF_PASSWORD: ${{ secrets.aritfactory_PWD }}
 
       - name: show JFrong CLI
         run: jf c show
