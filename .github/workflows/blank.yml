@@ -30,7 +30,7 @@ jobs:
       - name: setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
         with:
-          vesion: latest
+          version: latest
         env:
           JF_URL: ${{ secrets.aritfactory_url }}          
           JF_USER: ${{ secrets.aritfactory_USER }}          
