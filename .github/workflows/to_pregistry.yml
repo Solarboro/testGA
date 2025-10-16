@@ -23,7 +23,7 @@ jobs:
 
       - name: login to private registry
         run: |
-          echo "${{ serets.REGISTRY_PASSWORD }}" | docker login \
-          ${{ serets.REGISTRY_URL }} \
-          -u ${{serets.REGISTRY_USERNAME}} \
+          echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login \
+          ${{ secrets.REGISTRY_URL }} \
+          -u ${{ secrets.REGISTRY_USERNAME }} \
           --password-stdin
